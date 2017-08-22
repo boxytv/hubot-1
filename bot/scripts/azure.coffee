@@ -5,7 +5,7 @@
 
 module.exports = (robot) ->
   robot.respond /dev down/i, (msg) ->
-    msg.http("https://s5events.azure-automation.net/webhooks?token=kM62chx%2fEo1w%2f0QtLLLN6ZVA2zFeVuad3sQ11XdbW54%3d
+    msg.http("https://s5events.azure-automation.net/webhooks?token=pWSMSapCfrVk6wkRN03EztA%2f5XQviFBdDrko%2bgwsLqc%3d
 ")
       .post() (err, res, body) ->
         if err
@@ -15,7 +15,7 @@ module.exports = (robot) ->
         msg.send "Powering down dev"
 
   robot.respond /dev up/i, (msg) ->
-    msg.http("https://s5events.azure-automation.net/webhooks?token=9L6S7qbG1acB7pAf5hmuW3%2frHuhoaVMeksjq%2fsZVTwc%3d
+    msg.http("https://s5events.azure-automation.net/webhooks?token=JrOdkbCGU%2f%2bpS5IBPS%2fDJ%2fbXmjgEwkWCBAWounHKbBc%3d
 ")
       .post() (err, res, body) ->
         if err
