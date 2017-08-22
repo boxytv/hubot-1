@@ -1,0 +1,15 @@
+version: "2"
+services:
+  redis:
+   image: redis:latest
+   
+  hubot:
+   image: rplan/hubot
+   environment:
+    - HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}
+    - HUBOT_NAME=${HUBOT_NAME}
+    - HUBOT_URL=${HUBOT_URL}
+   links:
+    - redis:redis
+   ports:
+    - "8081:8080"
