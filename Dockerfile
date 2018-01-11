@@ -16,6 +16,9 @@ WORKDIR /opt/bot
 
 ADD bot /opt/bot
 
+COPY bot/scripts/bindings.js /opt/bot/scripts/
+COPY bot/scripts/azure.coffee /opt/bot/scripts/
+
 RUN npm install paperspace-node
 
 CMD ["./bin/hubot", "--adapter", "slack"]
