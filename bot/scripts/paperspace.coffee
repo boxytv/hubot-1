@@ -12,7 +12,7 @@ module.exports = (robot) ->
 
   robot.respond /paperspace up/i, (msg) ->
     @exec = require('child_process').exec
-    command = "paperspace machines stop --machineId 'psom35f1h'"
+    command = "paperspace machines start --machineId 'psom35f1h'"
     # your code here, knowing it was successful
     msg.send "Powering up paperspace"
 
