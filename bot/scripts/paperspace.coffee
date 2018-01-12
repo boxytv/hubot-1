@@ -7,14 +7,14 @@ module.exports = (robot) ->
   robot.respond /paperspace down/i, (msg) ->
     @exec = require('child_process').exec
     command = "paperspace machines stop --machineId 'psom35f1h'"
-      # your code here, knowing it was successful
-        msg.send "Powering down paperspace"
+    # your code here, knowing it was successful
+    msg.send "Powering down paperspace"
 
   robot.respond /paperspace up/i, (msg) ->
     @exec = require('child_process').exec
     command = "paperspace machines stop --machineId 'psom35f1h'"
-      # your code here, knowing it was successful
-        msg.send "Powering up paperspace"
+    # your code here, knowing it was successful
+    msg.send "Powering up paperspace"
 
   # the expected value of :room is going to vary by adapter, it might be a numeric id, name, token, or some other value
   robot.router.post '/hubot/test/:room', (req, res) ->
