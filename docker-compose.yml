@@ -4,7 +4,7 @@ services:
    image: redis:latest
    
   hubot:
-   image: rplan/hubot
+   image: boxytv.azurecr.io/hubot:latest
    environment:
     - HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN}
     - HUBOT_NAME=${HUBOT_NAME}
