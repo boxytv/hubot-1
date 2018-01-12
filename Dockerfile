@@ -16,6 +16,6 @@ WORKDIR /opt/bot
 
 ADD bot /opt/bot
 
-RUN npm install paperspace-node
+RUN npm install
 
 CMD ["./bin/hubot", "--adapter", "slack"]
