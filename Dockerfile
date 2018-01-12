@@ -9,7 +9,8 @@ ENV HUBOT_VERSION 2.18.0
 RUN npm install -g \
     hubot@${HUBOT_VERSION} \
     yo@1.7.0 \
-    generator-hubot@0.3.1
+    generator-hubot@0.3.1 \
+    paperspace-node
 
 USER node
 WORKDIR /opt/bot
