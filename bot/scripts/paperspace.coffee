@@ -3,16 +3,17 @@
 #   hubot paperspace down - power down paperspace vms
 #   hubot paperspace up - power up paperspace vms
 
+apikey = process.env.HUBOT_PAPERSPACE_API_KEY
 module.exports = (robot) ->
   robot.respond /paperspace down/i, (msg) ->
     @exec = require('child_process').exec
-    command = "paperspace machines stop --machineId 'psom35f1h'"
+    command = "paperspace machines stop --machineId 'psom35f1h' --apiKey #{apikey}"
     # your code here, knowing it was successful
     msg.send "Powering down paperspace"
 
   robot.respond /paperspace up/i, (msg) ->
     @exec = require('child_process').exec
-    command = "paperspace machines start --machineId 'psom35f1h'"
+    command = "paperspace machines start --machineId 'psom35f1h' --apiKey #{apikey}"
     # your code here, knowing it was successful
     msg.send "Powering up paperspace"
 
