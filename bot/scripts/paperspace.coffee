@@ -13,10 +13,7 @@ module.exports = (robot) ->
       command = "paperspace machines stop --machineId #{vm}  --apiKey #{apikey}"
       msg.send "Vm powering down #{vm}"
 
-      @exec command, (error, stderr) ->
-        msg.send error
-        msg.send stderr
-    msg.send "Powering down paperspace"
+      @exec command
 
   robot.respond /paperspace up/i, (msg) ->
     for vm in vms
@@ -25,10 +22,7 @@ module.exports = (robot) ->
       # your code here, knowing it was successful
       msg.send "Vm powering up #{vm}"
 
-      @exec command, (error, stderr) ->
-        msg.send error
-        msg.send stderr
-    msg.send "Powering up paperspace"
+      @exec command
 
   # the expected value of :room is going to vary by adapter, it might be a numeric id, name, token, or some other value
   robot.router.post '/hubot/test/:room', (req, res) ->
