@@ -12,6 +12,7 @@ module.exports = (robot) ->
       @exec = require('child_process').exec
       command = "paperspace machines stop --machineId #{vm}  --apiKey #{apikey}"
       # your code here, knowing it was successful
+      msg.send "Vm powering up #{vm}"
 
       @exec command, (error, stdout, stderr) ->
         msg.send error
