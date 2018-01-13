@@ -11,10 +11,10 @@ module.exports = (robot) ->
     for vm in vms
       @exec = require('child_process').exec
       command = "paperspace machines stop --machineId #{vm}  --apiKey #{apikey}"
+      msg.send "Vm powering down #{vm}"
 
-      @exec command, (error, stdout, stderr) ->
+      @exec command, (error, stderr) ->
         msg.send error
-        msg.send "Vm powering up #{vm}"
         msg.send stderr
     msg.send "Powering down paperspace"
 
@@ -23,10 +23,10 @@ module.exports = (robot) ->
       @exec = require('child_process').exec
       command = "paperspace machines start --machineId #{vm} --apiKey #{apikey}"
       # your code here, knowing it was successful
+      msg.send "Vm powering up #{vm}"
 
-      @exec command, (error, stdout, stderr) ->
+      @exec command, (error, stderr) ->
         msg.send error
-        msg.send "Vm powering up #{vm}"
         msg.send stderr
     msg.send "Powering up paperspace"
 
