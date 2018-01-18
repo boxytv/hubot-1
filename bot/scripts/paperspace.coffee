@@ -35,7 +35,7 @@ module.exports = (robot) ->
       # your code here, knowing it was successful
         msg.send "Stream starting"
 
-  robot.respond /stream start/i, (msg) ->
+  robot.respond /stream stop/i, (msg) ->
     msg.http("http://184.105.174.7:5000/s3cr3tStr3mk1ll")
       .post() (err, res, body) ->
         if err
