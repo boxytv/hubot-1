@@ -6,6 +6,7 @@
 #   hubot stream stop - kill obs and stream
 
 vms = [ 'psom35f1h', 'psv6mebry' ]
+ips = [ '184.105.175.33', '184.105.175.33' ]
 
 apikey = process.env.HUBOT_PAPERSPACE_API_KEY
 module.exports = (robot) ->
@@ -27,22 +28,24 @@ module.exports = (robot) ->
       @exec command
 
   robot.respond /stream start/i, (msg) ->
-    msg.http("http://184.105.174.7:5000/s3cr3tStr3mUrl")
-      .get() (err, res, body) ->
-        if err
-          res.send "Encountered an error :( #{err}"
-          return
-      # your code here, knowing it was successful
-        msg.send "Stream starting"
+    for ip in ips
+      msg.http("http://#{ip}:5000/s3cr3tStr3mUrl")
+        .get() (err, res, body) ->
+          if err
+            res.send "Encountered an error :( #{err}"
+            return
+        # your code here, knowing it was successful
+    msg.send "Stream starting"
 
   robot.respond /stream stop/i, (msg) ->
-    msg.http("http://184.105.174.7:5000/s3cr3tStr3mk1ll")
-      .get() (err, res, body) ->
-        if err
-          res.send "Encountered an error :( #{err}"
-          return
-      # your code here, knowing it was successful
-        msg.send "Stream stopped"
+    for ip in ips
+      msg.http("http://#{ip}:5000/s3cr3tStr3mk1ll")
+        .get() (err, res, body) ->
+          if err
+            res.send "Encountered an error :( #{err}"
+            return
+        # your code here, knowing it was successful
+    msg.send "Stream stopped"
 
   # the expected value of :room is going to vary by adapter, it might be a numeric id, name, token, or some other value
   robot.router.post '/hubot/test/:room', (req, res) ->
