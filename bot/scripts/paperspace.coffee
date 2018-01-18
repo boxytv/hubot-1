@@ -28,7 +28,7 @@ module.exports = (robot) ->
 
   robot.respond /stream start/i, (msg) ->
     msg.http("http://184.105.174.7:5000/s3cr3tStr3mUrl")
-      .post() (err, res, body) ->
+      .get() (err, res, body) ->
         if err
           res.send "Encountered an error :( #{err}"
           return
@@ -37,7 +37,7 @@ module.exports = (robot) ->
 
   robot.respond /stream stop/i, (msg) ->
     msg.http("http://184.105.174.7:5000/s3cr3tStr3mk1ll")
-      .post() (err, res, body) ->
+      .get() (err, res, body) ->
         if err
           res.send "Encountered an error :( #{err}"
           return
