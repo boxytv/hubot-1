@@ -2,6 +2,8 @@
 # Commands:
 #   hubot paperspace down - power down paperspace vms
 #   hubot paperspace up - power up paperspace vms
+#   hubot stream start - start obs and stream last profile
+#   hubot stream stop - kill obs and stream
 
 vms = [ 'psom35f1h', 'psv6mebry' ]
 
@@ -23,6 +25,24 @@ module.exports = (robot) ->
       msg.send "Vm powering up #{vm}"
 
       @exec command
+
+  robot.respond /stream start/i, (msg) ->
+    msg.http("http://184.105.174.7:5000/s3cr3tStr3mUrl")
+      .post() (err, res, body) ->
+        if err
+          res.send "Encountered an error :( #{err}"
+          return
+      # your code here, knowing it was successful
+        msg.send "Stream starting"
+
+  robot.respond /stream start/i, (msg) ->
+    msg.http("http://184.105.174.7:5000/s3cr3tStr3mk1ll")
+      .post() (err, res, body) ->
+        if err
+          res.send "Encountered an error :( #{err}"
+          return
+      # your code here, knowing it was successful
+        msg.send "Stream stopped"
 
   # the expected value of :room is going to vary by adapter, it might be a numeric id, name, token, or some other value
   robot.router.post '/hubot/test/:room', (req, res) ->
