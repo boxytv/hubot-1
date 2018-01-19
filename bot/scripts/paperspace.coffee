@@ -6,7 +6,7 @@
 #   hubot stream stop - kill obs and stream
 
 vms = [ 'psom35f1h', 'psv6mebry' ]
-ips = [ '184.105.175.33', '184.105.175.33' ]
+ips = [ '184.105.175.33', '184.105.174.7' ]
 
 apikey = process.env.HUBOT_PAPERSPACE_API_KEY
 module.exports = (robot) ->
@@ -29,7 +29,8 @@ module.exports = (robot) ->
 
   robot.respond /stream start/i, (msg) ->
     for ip in ips
-      msg.http("http://#{ip}:5000/s3cr3tStr3mUrl")
+      url = "http://" + #{ip} + ":5000/s3cr3tStr3mUrl"
+      msg.http("#{url}")
         .get() (err, res, body) ->
           if err
             res.send "Encountered an error :( #{err}"
@@ -39,7 +40,8 @@ module.exports = (robot) ->
 
   robot.respond /stream stop/i, (msg) ->
     for ip in ips
-      msg.http("http://#{ip}:5000/s3cr3tStr3mk1ll")
+      url = "http://" + #{ip} + ":5000/s3cr3tStr3mk1ll"
+      msg.http("#{url}")
         .get() (err, res, body) ->
           if err
             res.send "Encountered an error :( #{err}"
