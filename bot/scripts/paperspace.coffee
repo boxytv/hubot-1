@@ -36,7 +36,7 @@ module.exports = (robot) ->
             res.send "Encountered an error :( #{err}"
             return
         # your code here, knowing it was successful
-      msg.send body 
+          msg.send "Server #{ip} #{body}" 
 
   robot.respond /stream stop/i, (msg) ->
     for ip in ips
@@ -47,7 +47,7 @@ module.exports = (robot) ->
             res.send "Encountered an error :( #{err}"
             return
         # your code here, knowing it was successful
-      msg.send body 
+          msg.send "Server #{ip} #{body}" 
 
   # the expected value of :room is going to vary by adapter, it might be a numeric id, name, token, or some other value
   robot.router.post '/hubot/test/:room', (req, res) ->
