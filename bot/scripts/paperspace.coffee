@@ -29,7 +29,7 @@ module.exports = (robot) ->
 
   robot.respond /stream start/i, (msg) ->
     for ip in ips
-      url = "http://" + #{ip} + ":5000/s3cr3tStr3mUrl"
+      url = "http://#{ip}:5000/s3cr3tStr3mUrl"
       msg.http("#{url}")
         .get() (err, res, body) ->
           if err
@@ -41,7 +41,7 @@ module.exports = (robot) ->
 
   robot.respond /stream stop/i, (msg) ->
     for ip in ips
-      url = "http://" + #{ip} + ":5000/s3cr3tStr3mk1ll"
+      url = "http://#{ip}:5000/s3cr3tStr3mk1ll"
       msg.http("#{url}")
         .get() (err, res, body) ->
           if err
