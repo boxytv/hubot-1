@@ -35,6 +35,7 @@ module.exports = (robot) ->
           if err
             res.send "Encountered an error :( #{err}"
             return
+          res.send "responce body #{body} " 
         # your code here, knowing it was successful
       msg.send "#{url}"
     msg.send "Stream starting"
