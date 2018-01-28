@@ -32,7 +32,6 @@ module.exports = (robot) ->
 
       @exec command
 
-
   robot.respond /stream start (.*)/i, (msg) ->
     interval = msg.match[1]
     if interval is "random"
@@ -47,9 +46,10 @@ module.exports = (robot) ->
               res.send "Encountered an error :( #{err}"
               return
           # your code here, knowing it was successful
-            msg.send "#{body}" 
-            msg.send "sleeping for #{sleeptime} ms"
-            sleep sleeptime
+            msg.send "#{body}"
+        if ip is '184.105.174.7' 
+          msg.send "sleeping for #{sleeptime} ms"
+          sleep sleeptime
     else
       for ip in ips
         url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
