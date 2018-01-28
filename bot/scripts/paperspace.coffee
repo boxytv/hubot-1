@@ -9,7 +9,6 @@
 vms = [ 'psom35f1h', 'psv6mebry' ]
 ips = [ '184.105.175.33', '184.105.174.7' ]
 
-### Sleep function
 sleep = (ms) ->
   start = new Date().getTime()
   continue while new Date().getTime() - start < ms
