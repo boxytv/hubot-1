@@ -9,6 +9,11 @@
 vms = [ 'psom35f1h', 'psv6mebry' ]
 ips = [ '184.105.175.33', '184.105.174.7' ]
 
+### Sleep function
+sleep = (ms) ->
+  start = new Date().getTime()
+  continue while new Date().getTime() - start < ms
+
 apikey = process.env.HUBOT_PAPERSPACE_API_KEY
 module.exports = (robot) ->
   robot.respond /paperspace down/i, (msg) ->
@@ -28,32 +33,44 @@ module.exports = (robot) ->
 
       @exec command
 
-  robot.respond /stream start/i, (msg) ->
-    for ip in ips
-      url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
-      msg.http(url)
-        .get() (err, res, body) ->
-          if err
-            res.send "Encountered an error :( #{err}"
-            return
-        # your code here, knowing it was successful
-          msg.send "#{body}" 
+#  robot.respond /stream start/i, (msg) ->
+#    for ip in ips
+#      url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
+#      msg.http(url)
+#        .get() (err, res, body) ->
+#          if err
+#            res.send "Encountered an error :( #{err}"
+#            return
+#        # your code here, knowing it was successful
+#          msg.send "#{body}" 
 
-  robot.respond /stream start random/i, (msg) ->
-    probability = Math.random() * (11 -5) + 5
-    0.0 <= probability < 1.0
-    sleeptime = Math.floor(probability) * 1000
-    for ip in ips
-      url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
-      msg.http("#{url}")
-        .get() (err, res, body) ->
-          if err
-            res.send "Encountered an error :( #{err}"
-            return
-        # your code here, knowing it was successful
-          msg.send "#{body}" 
-          msg.send "sleeping for #{sleeptime}"
-          sleep sleeptime
+  robot.respond /stream start (.*)/i, (msg) ->
+    interval = res.match[1]
+    if interval is "random"
+      probability = Math.random() * (11 -5) + 5
+      0.0 <= probability < 1.0
+      sleeptime = Math.floor(probability) * 1000
+      for ip in ips
+        url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
+        msg.http("#{url}")
+          .get() (err, res, body) ->
+            if err
+              res.send "Encountered an error :( #{err}"
+              return
+          # your code here, knowing it was successful
+            msg.send "#{body}" 
+            msg.send "sleeping for #{sleeptime} ms"
+            sleep sleeptime
+    else
+      for ip in ips
+        url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
+        msg.http("#{url}")
+          .get() (err, res, body) ->
+            if err
+              res.send "Encountered an error :( #{err}"
+              return
+          # your code here, knowing it was successful
+            msg.send "#{body}"
 
   robot.respond /stream stop/i, (msg) ->
     for ip in ips
