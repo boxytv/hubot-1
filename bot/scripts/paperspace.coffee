@@ -34,7 +34,7 @@ module.exports = (robot) ->
 
 
   robot.respond /stream start (.*)/i, (msg) ->
-    interval = res.match[1]
+    interval = msg.match[1]
     if interval is "random"
       probability = Math.random() * (11 -5) + 5
       0.0 <= probability < 1.0
