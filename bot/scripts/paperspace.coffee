@@ -2,7 +2,7 @@
 # Commands:
 #   hubot paperspace down - power down paperspace vms
 #   hubot paperspace up - power up paperspace vms
-#   hubot stream start - start obs and stream last profile
+#   hubot stream start all  - start obs and stream last profile
 #   hubot stream start random - bring up stream with random dealy 5 to 10 seconds
 #   hubot stream stop - kill obs and stream
 
@@ -48,8 +48,8 @@ module.exports = (robot) ->
               return
           # your code here, knowing it was successful
             msg.send "#{body}" 
-            msg.send "sleeping for #{sleeptime} ms"
-            sleep sleeptime
+        msg.send "sleeping for #{sleeptime} ms"
+        sleep sleeptime
     else
       for ip in ips
         url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
