@@ -48,8 +48,8 @@ module.exports = (robot) ->
               return
           # your code here, knowing it was successful
             msg.send "#{body}" 
-          msg.send "sleeping for #{sleeptime} ms"
-          sleep sleeptime
+            msg.send "sleeping for #{sleeptime} ms"
+            sleep sleeptime
     else
       for ip in ips
         url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
