@@ -33,16 +33,6 @@ module.exports = (robot) ->
 
       @exec command
 
-#  robot.respond /stream start/i, (msg) ->
-#    for ip in ips
-#      url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
-#      msg.http(url)
-#        .get() (err, res, body) ->
-#          if err
-#            res.send "Encountered an error :( #{err}"
-#            return
-#        # your code here, knowing it was successful
-#          msg.send "#{body}" 
 
   robot.respond /stream start (.*)/i, (msg) ->
     interval = res.match[1]
