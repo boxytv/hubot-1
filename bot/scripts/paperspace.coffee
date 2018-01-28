@@ -3,7 +3,7 @@
 #   hubot paperspace down - power down paperspace vms
 #   hubot paperspace up - power up paperspace vms
 #   hubot stream start - start obs and stream last profile
-#   hubot stream start randome - bring up stream with random dealy 5 to 10 seconds
+#   hubot stream start random - bring up stream with random dealy 5 to 10 seconds
 #   hubot stream stop - kill obs and stream
 
 vms = [ 'psom35f1h', 'psv6mebry' ]
