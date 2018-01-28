@@ -38,6 +38,22 @@ module.exports = (robot) ->
         # your code here, knowing it was successful
           msg.send "#{body}" 
 
+  robot.respond /stream start random/i, (msg) ->
+    probability = Math.random() * (11 -5) + 5
+    0.0 <= probability < 1.0
+    sleeptime = Math.floor(probability) * 1000
+    for ip in ips
+      url = "http://#{ip}:5000/s3cr3tStr3mUrl/"
+      msg.http("#{url}")
+        .get() (err, res, body) ->
+          if err
+            res.send "Encountered an error :( #{err}"
+            return
+        # your code here, knowing it was successful
+          msg.send "#{body}" 
+          msg.send "sleeping for #{sleeptime}"
+          sleep sleeptime
+
   robot.respond /stream stop/i, (msg) ->
     for ip in ips
       url = "http://#{ip}:5000/s3cr3tStr3mk1ll/"
